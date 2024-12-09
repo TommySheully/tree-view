@@ -1,16 +1,17 @@
-export const Sidebar = () => {
-  return (
-    <ul className='menu w-[300px] rounded-md border border-black/10'>
-      <li className='menu-title'>Menu</li>
-      <li>
-        <a>Item 1</a>
+import { menu } from '@/shared/constants';
+
+export const Sidebar = () => (
+  <ul className='menu w-[200px] rounded-md border border-black/10'>
+    <li className='menu-title'>Menu</li>
+    {menu.map((item) => (
+      <li key={item.title}>
+        <a
+          className='rounded-md'
+          href={item.route}
+        >
+          {item.title}
+        </a>
       </li>
-      <li>
-        <a>Item 2</a>
-      </li>
-      <li>
-        <a>Item 3</a>
-      </li>
-    </ul>
-  );
-};
+    ))}
+  </ul>
+);

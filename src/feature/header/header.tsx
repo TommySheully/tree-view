@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export const Header = () => {
   return (
     <header className='flex w-full justify-center shadow-xl'>
@@ -12,10 +14,12 @@ export const Header = () => {
               role='button'
               className='avatar btn btn-circle btn-ghost'
             >
-              <div className='w-10 rounded-full'>
-                <img
+              <div className='rounded-full'>
+                <Image
                   alt='Tailwind CSS Navbar component'
                   src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+                  width={20}
+                  height={20}
                 />
               </div>
             </div>
