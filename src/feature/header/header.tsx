@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export const Header = () => {
   return (
-    <header className='flex w-full justify-center shadow-xl'>
-      <div className='navbar rounded-md border border-black/10'>
+    <header className='flex w-full justify-center'>
+      <div className='navbar border-y border-black/10'>
         <div className='flex-1'>
           <button className='btn btn-circle rounded-md text-xs shadow-xl'>Back</button>
         </div>

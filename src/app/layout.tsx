@@ -6,9 +6,9 @@ import { Sidebar } from '@/feature/sidebar/sidebar';
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html>
-      <body className='flex h-full min-h-screen gap-1 rounded-md bg-color-main p-1'>
+      <body className='flex h-full min-h-screen bg-color-main'>
         <Sidebar />
-        <main className='flex h-full w-full flex-col gap-2'>
+        <main className='flex h-full w-full flex-col'>
           <Header />
           {children}
         </main>
