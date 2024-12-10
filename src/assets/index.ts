@@ -1,3 +1,3 @@
-/*import kirtanMain from './24house/24houseMain.svg';*/
+import img from './img.webp';
 
-export {};
+export { img };

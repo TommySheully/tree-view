@@ -1,7 +1,9 @@
 'use client';
 
+import { redirect } from 'next/navigation';
+
 const Page = () => {
-  return <div></div>;
+  redirect('/user/demo');
 };
 
 export default Page;
