@@ -12,6 +12,8 @@ import { useToggle } from '@/shared/hooks';
 import { CaretDown, CaretUp, PlusCircle } from '@/shared/icon';
 import { Pencil } from 'lucide-react';
 import { DeleteModal } from '@/feature';
+import { CreateModal } from '@/feature/create-modal';
+import { RenameModal } from '@/feature/rename-modal';
 
 type TreeViewProps = {
   name: string;
@@ -42,20 +44,13 @@ export const TreeView = ({ name, id, tree, isFirst = false }: TreeViewProps) => 
           <span className='text-sm'>{name}</span>
         </div>
         <ClickPresenter className='flex gap-1'>
-          <Button
-            variant='link'
-            size='icon'
-          >
-            <PlusCircle />
-          </Button>
+          <CreateModal id={id} />
           {isFirst && (
             <>
-              <Button
-                variant='link'
-                size='icon'
-              >
-                <Pencil />
-              </Button>
+              <RenameModal
+                name={name}
+                id={id}
+              />
               <DeleteModal
                 name={name}
                 id={id}
