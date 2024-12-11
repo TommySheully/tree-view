@@ -33,6 +33,28 @@ export const API = {
       }),
     );
   },
+  createTree(nodeId: string, name: string): Promise<Tree | null> {
+    return apiRequest(() =>
+      instance.post<Tree>('api.user.tree.node.create', null, {
+        params: {
+          treeName: TREE_NAME,
+          parentNodeId: nodeId,
+          nodeName: name,
+        },
+      }),
+    );
+  },
+  renameTree(nodeId: string, name: string): Promise<Tree | null> {
+    return apiRequest(() =>
+      instance.post<Tree>('api.user.tree.node.rename', null, {
+        params: {
+          treeName: TREE_NAME,
+          nodeId: nodeId,
+          newNodeName: name,
+        },
+      }),
+    );
+  },
   deleteTree(nodeId: string): Promise<Tree | null> {
     return apiRequest(() =>
       instance.post<Tree>('api.user.tree.node.delete', null, {
