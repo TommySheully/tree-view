@@ -16,7 +16,7 @@ import {
 import { PlusCircle } from '@/shared/icon';
 import { useCreateModal } from '@/feature/create-modal/model';
 
-type CreateModalProps = {
+export type CreateModalProps = {
   id: string;
 };
 

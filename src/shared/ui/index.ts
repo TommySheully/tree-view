@@ -1,4 +1,4 @@
-export * from './tree-view';
+export * from '../../feature/tree-view';
 export * from './collapsible';
 export * from './dialog';
 export * from './button';

@@ -15,7 +15,7 @@ import { Trash } from '@/shared/icon';
 import { useToggle } from '@/shared/hooks';
 import { useDeleteNode } from '@/shared/api/use-delete-tree';
 
-type DialogProps = {
+export type DialogProps = {
   name: string;
   id: string;
 };

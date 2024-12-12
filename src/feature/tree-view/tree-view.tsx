@@ -1,28 +1,31 @@
 'use client';
 
 import { Tree } from '@/shared';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-  ClickPresenter,
-  Button,
-} from '@/shared/ui';
+import { ClickPresenter, Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/shared/ui';
 import { useToggle } from '@/shared/hooks';
-import { CaretDown, CaretUp, PlusCircle } from '@/shared/icon';
-import { Pencil } from 'lucide-react';
-import { DeleteModal } from '@/feature';
-import { CreateModal } from '@/feature/create-modal';
-import { RenameModal } from '@/feature/rename-modal';
+import { CaretDown, CaretUp } from '@/shared/icon';
+import { CreateModalProps, DialogProps, RenameModalProps } from '@/feature';
+import { ReactNode } from 'react';
 
 type TreeViewProps = {
   name: string;
   id: string;
   tree: Tree[];
   isFirst?: boolean;
+  createModal: (props: CreateModalProps) => ReactNode;
+  renameModal: (props: RenameModalProps) => ReactNode;
+  deleteModal: (props: DialogProps) => ReactNode;
 };
 
-export const TreeView = ({ name, id, tree, isFirst = false }: TreeViewProps) => {
+export const TreeView = ({
+  name,
+  id,
+  tree,
+  isFirst = false,
+  deleteModal,
+  renameModal,
+  createModal,
+}: TreeViewProps) => {
   const { isOpen, toggleHandler } = useToggle(false);
 
   return (
@@ -44,17 +47,11 @@ export const TreeView = ({ name, id, tree, isFirst = false }: TreeViewProps) => 
           <span className='text-sm'>{name}</span>
         </div>
         <ClickPresenter className='flex gap-1'>
-          <CreateModal id={id} />
+          {createModal({ id })}
           {isFirst && (
             <>
-              <RenameModal
-                name={name}
-                id={id}
-              />
-              <DeleteModal
-                name={name}
-                id={id}
-              />
+              {renameModal({ id, name })}
+              {deleteModal({ id, name })}
             </>
           )}
         </ClickPresenter>
@@ -64,6 +61,9 @@ export const TreeView = ({ name, id, tree, isFirst = false }: TreeViewProps) => 
           tree.length > 0 &&
           tree.map((e) => (
             <TreeView
+              createModal={createModal}
+              renameModal={renameModal}
+              deleteModal={deleteModal}
               isFirst
               key={e.id}
               name={e.name}
