@@ -16,12 +16,12 @@ import {
 import { useRenameModal } from '@/feature/rename-modal/model';
 import { Pencil } from 'lucide-react';
 
-type CreateModalProps = {
+export type RenameModalProps = {
   id: string;
   name: string;
 };
 
-export const RenameModal = ({ id, name }: CreateModalProps) => {
+export const RenameModal = ({ id, name }: RenameModalProps) => {
   const {
     modal: { isOpen, toggleHandler, closeHandler },
     state: { form, control, isLoading, isValid },

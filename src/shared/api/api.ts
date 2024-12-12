@@ -7,7 +7,15 @@ const instance = axios.create({
   },
 });
 
-const TREE_NAME = '{C9232B85-AD10-459C-A44F-70CA30C60E5F}';
+const TREE_NAME = 'c82c3308-263a-4d9f-9fe5-ed2a75fb62fb';
+
+interface CustomError {
+  data: {
+    message: string;
+  };
+  id: string;
+  type: string;
+}
 
 const apiRequest = async <T>(request: () => Promise<AxiosResponse<T>>): Promise<T | null> => {
   try {
@@ -15,8 +23,15 @@ const apiRequest = async <T>(request: () => Promise<AxiosResponse<T>>): Promise<
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
+      const errorData = error.response?.data as CustomError;
+      if (errorData) {
+        alert(`Error: ${errorData.data.message} (ID: ${errorData.id}, Type: ${errorData.type})`);
+      } else {
+        alert(`Error: ${error.message}`);
+      }
       console.error('Axios error:', error.response?.data || error.message);
     } else {
+      alert('Unexpected error occurred.');
       console.error('Unexpected error:', error);
     }
     return null;

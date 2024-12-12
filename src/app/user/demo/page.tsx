@@ -2,6 +2,7 @@
 
 import { useGetTree } from '@/shared/api/use-get-tree';
 import { Skeleton, TreeView } from '@/shared';
+import { CreateModal, DeleteModal, RenameModal } from '@/feature';
 
 const Demo = () => {
   const { data, isLoading } = useGetTree();
@@ -20,6 +21,9 @@ const Demo = () => {
       id='aboutAindra-main'
     >
       <TreeView
+        createModal={({ id }) => <CreateModal id={id} />}
+        renameModal={(props) => <RenameModal {...props} />}
+        deleteModal={(props) => <DeleteModal {...props} />}
         name='Root'
         id={data.id}
         tree={data.children}
